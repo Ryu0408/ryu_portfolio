@@ -1,10 +1,41 @@
 import { useState } from 'react';
 import TechStack from '../components/TechStack';
+import ProjectModal from '../components/ProjectModal';
 import './Landing.css';
+
+const projects = [
+  {
+    id: 'happytrain',
+    title: "행복을 주는 사람들 플랫폼",
+    description: "실시간 좌석 예약, 커뮤니티, 문자 발송 및 포인트 사용(적립) 시스템을 포함한 기차 여행 예약 플랫폼",
+    url: "https://happytrain.co.kr/",
+    icon: "🚆",
+    details: true
+  },
+  {
+    id: 'autobahn',
+    title: "오토반 썬팅필름 브랜드 플랫폼",
+    description: "전국 시공점 연결, 정품 확인 및 보증서 발급, 관리자 자료 공유, 이벤트 관리 기능을 제공하는 통합 브랜드 운영 플랫폼",
+    url: "https://www.autobahnkorea.com/",
+    icon: "🚗",
+    details: true
+  },
+  {
+    id: 'optimum',
+    title: "옵티멈 윈도우 필름 플랫폼",
+    description: "시공점 검색, 보증서 발급 및 관리, 브랜드 자료 공유와 더불어 공구몰 연동 기능까지 갖춘 윈도우 필름 브랜드 플랫폼",
+    url: "https://www.optimumwindowfilm.com/",
+    icon: "🔧",
+    details: true
+  }
+];
 
 export default function Landing() {
   const [isImageOpen, setIsImageOpen] = useState(false);
+  const [modalProjectId, setModalProjectId] = useState<string | null>(null);
 
+  const openModal = (id: string) => setModalProjectId(id);
+  const closeModal = () => setModalProjectId(null);
   return (
     <main className="scroll-smooth">
       {/* Top Navigation */}
@@ -106,38 +137,90 @@ export default function Landing() {
       {/* Tech Stack */}
       <TechStack />
 
-      {/* Projects */}
+       {/* Projects */}
       <section id="projects" className="projects-section">
-        <div className="content-box">
+        <div className="project-box">
           <h2 className="section-title">Projects</h2>
           <div className="project-grid">
-            <ProjectCard
-              title="앰비언스 ERP 시스템"
-              description="전사적 물류, 회계, 영업 데이터를 통합한 ERP 시스템. 수작업 기반의 업무를 자동화하며 오차율 90% 감소"
-            />
-            <ProjectCard
-              title="AI 조명 추천 플랫폼"
-              description="고객 공간 정보를 바탕으로 AI가 조명 제품을 추천. 시공 예약 → 설치까지 연결되는 전과정 플랫폼"
-            />
-            <ProjectCard
-              title="솔레노어 헬스케어 플랫폼"
-              description="PT 예약, 식단 피드백, 체력 평가를 통합한 헬스 SaaS. 고객용 앱 + 관리자용 웹을 동시 구축"
-            />
-            <ProjectCard
-              title="성형 미리보기 플랫폼"
-              description="얼굴 분석을 기반으로 성형 시뮬레이션 제공. 병원 예약 및 관리 기능도 포함"
-            />
-            <ProjectCard
-              title="브랜드 폐쇄몰 시스템"
-              description="루이스폴센, 베르판 등 독점 브랜드의 거래처 전용몰. 실시간 재고 및 납기 확인, 주문서 자동화 기능 구축"
-            />
-            <ProjectCard
-              title="크롤링 기반 인테리어 업체 매칭 시스템"
-              description="Python 크롤링으로 실시간 업체 리스트 확보 및 검색. 내부 ERP와 연동하여 자동 매칭"
-            />
+            {projects.map((project, index) => {
+              if (project.details) {
+                return (
+                  <div
+                    key={index}
+                    className="project-card clickable"
+                    onClick={() => openModal(project.id)}
+                  >
+                    <div className="project-icon">{project.icon}</div>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-desc">{project.description}</p>
+                  </div>
+                );
+              }
+              return (
+                <a
+                  href={project.url}
+                  key={index}
+                  className="project-card"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <div className="project-icon">{project.icon}</div>
+                  <h3 className="project-title">{project.title}</h3>
+                  <p className="project-desc">{project.description}</p>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      <ProjectModal
+        isOpen={modalProjectId === 'happytrain'}
+        onClose={closeModal}
+        title="행복을 주는 사람들 – 기차 여행 예약 플랫폼"
+        description="기차 여행 예약을 위한 종합 플랫폼으로, 사용자 친화적인 예약 시스템과 다양한 부가 기능을 제공합니다."
+        features={[
+          "예약 시스템: 실시간 좌석 배치도 기반 예약",
+          "결제 기능: 다양한 결제 수단 지원",
+          "커뮤니티: 사용자 간 소통 게시판",
+          "제품 등록: 여행 상품 관리",
+          "문자 발송: 예약 알림 문자 시스템",
+          "포인트 시스템: 적립/사용 기반 고객 혜택",
+        ]}
+        link="https://happytrain.co.kr/"
+        icon="🚆"
+      />
+      <ProjectModal
+          isOpen={modalProjectId === 'optimum'}
+          onClose={closeModal}
+          title="옵티멈 윈도우 필름 브랜드 플랫폼"
+          description="전국 시공점 안내, 보증서 발급, 자료실, 이벤트 게시판 등 브랜드 운영 핵심 기능과 함께 공구몰 연동 기능까지 포함한 복합형 플랫폼입니다."
+          features={[
+            "공식 시공점 검색",
+            "정품 확인서 및 보증서 QR 발급",
+            "이벤트 / 뉴스 게시판 운영",
+            "브랜드 자료실 기능 (시공점용)",
+            "보증서 이력 관리 및 검색",
+            "공구몰 연동: 옵티멈 툴 사이트로 바로 이동 가능"
+          ]}
+          link="https://www.optimumwindowfilm.com/"
+          icon="🔧"
+        />
+        <ProjectModal
+          isOpen={modalProjectId === 'autobahn'}
+          onClose={closeModal}
+          title="오토반 썬팅필름 브랜드 운영 플랫폼"
+          description="오토반 썬팅 필름의 공식 브랜드 사이트로, 전국 시공점 안내, 정품 보증서 발급, 자료실 공유, 뉴스 및 이벤트 관리 등 브랜드 운영에 필요한 핵심 기능을 제공합니다."
+          features={[
+            "공식 시공점 검색: 지역 기반 시공점 찾기",
+            "정품 확인서 / 보증서 발급: QR 기반 고객 확인",
+            "이벤트 & 뉴스 게시판 운영",
+            "관리자 자료실: 시공점 대상 교육/홍보 자료 공유",
+            "보증서 이력 관리: 시리얼 넘버 검색 및 수정 기능",
+          ]}
+          link="https://www.autobahnkorea.com/"
+          icon="🚗"
+        />
 
       {/* Contact */}
       <section id="contact" className="contact-section">
@@ -146,14 +229,5 @@ export default function Landing() {
         <p>💼 GitHub: <a href="https://github.com/Ryu0408" className="link">github.com/Ryu0408</a></p>
       </section>
     </main>
-  );
-}
-
-function ProjectCard({ title, description }: { title: string; description: string }) {
-  return (
-    <div className="project-card">
-      <h3 className="project-title">{title}</h3>
-      <p className="project-desc">{description}</p>
-    </div>
   );
 }
