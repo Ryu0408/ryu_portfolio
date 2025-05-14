@@ -5,7 +5,7 @@ import {
     SiDocker, SiApache, SiNginx, SiJenkins,
     SiGithub, SiGraphql, SiLinux, SiExpress, SiExpo, SiDotnet,
     SiCodeigniter, SiKotlin, SiSwift, SiJira, SiFigma, SiSlack, SiNotion,
-    SiAmazonrds, SiAmazon, SiAmazonec2, SiAmazons3, SiAmazonroute53, SiOpenai
+    SiAmazonrds, SiAmazon, SiAmazonec2, SiAmazons3, SiAmazonroute53, SiOpenai, SiVite
 } from 'react-icons/si';
 import './TechStack.css';
 
@@ -16,6 +16,7 @@ const stackGroups = [
       { name: 'React', icon: <SiReact color="#61dafb" /> },
       { name: 'Vue.js', icon: <SiJavascript color="#42b883" /> },
       { name: 'Next.js', icon: <SiNextdotjs color="#000000" /> },
+      { name: 'Vite', icon: <SiVite color="#646CFF" /> },  // ← 요거 추가!
       { name: 'JavaScript', icon: <SiJavascript color="#f7df1e" /> },
       { name: 'TypeScript', icon: <SiTypescript color="#3178c6" /> },
     ]
@@ -24,14 +25,14 @@ const stackGroups = [
     title: 'Backend',
     items: [
       { name: 'Node.js', icon: <SiNodedotjs color="#68a063" /> },
+      { name: 'Express.js', icon: <SiExpress color="#000000" /> },
       { name: 'Nest.js', icon: <SiNestjs color="#e0234e" /> },
       { name: 'Spring Boot', icon: <SiSpringboot color="#6db33f" /> },
       { name: 'PHP', icon: <SiPhp color="#8892be" /> },
       { name: 'Laravel', icon: <SiLaravel color="#ff2d20" /> },
-      { name: 'ASP.NET', icon: <SiDotnet color="#512bd4" /> },
       { name: 'CodeIgniter', icon: <SiCodeigniter color="#ee4623" /> },
+      { name: 'ASP.NET', icon: <SiDotnet color="#512bd4" /> },
       { name: 'Python', icon: <SiPython color="#3776ab" /> },
-      { name: 'Express.js', icon: <SiExpress color="#000000" /> },
     ]
   },
   {
@@ -56,7 +57,7 @@ const stackGroups = [
       { name: 'Docker', icon: <SiDocker color="#0db7ed" /> },
       { name: 'Jenkins', icon: <SiJenkins color="#d33833" /> },
       { name: 'GraphQL', icon: <SiGraphql color="#e535ab" /> },
-      { name: 'NGINX', icon: <SiNginx color="#009639" /> },
+      { name: 'Nginx', icon: <SiNginx color="#009639" /> },
       { name: 'Apache', icon: <SiApache color="#d22128" /> },
       { name: 'Linux', icon: <SiLinux color="#333333" /> },
       { name: 'GitHub', icon: <SiGithub color="#181717" /> },
