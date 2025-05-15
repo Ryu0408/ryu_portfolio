@@ -8,6 +8,7 @@ type ProjectModalProps = {
   description: string;
   features: string[];
   link: string;
+  link2?: string;
   icon: string;
 };
 
@@ -18,6 +19,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   description,
   features,
   link,
+  link2,
   icon,
 }) => {
   if (!isOpen) return null;
@@ -42,6 +44,11 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
         <div className="modal-link">
           🔗 <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
         </div>
+        {link2 && (
+          <div className="modal-link">
+            🔗 <a href={link2} target="_blank" rel="noopener noreferrer">{link2}</a>
+          </div>
+        )}
       </div>
     </div>
   );
