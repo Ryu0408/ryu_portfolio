@@ -167,7 +167,7 @@ export default function Landing() {
           <ul className="timeline hero-timeline">
             <li><span className="year">2002~2005</span><p className="event">동래중학교 졸업</p></li>
             <li><span className="year">2005~2008</span><p className="event">충렬고등학교 이과계열 졸업</p></li>
-            <li><span className="year">2008~2012</span><p className="event">동국대학교 정보통신학과 졸업</p></li>
+            <li><span className="year">2008~2012</span><p className="event">동국대학교 정보통신공학과 졸업</p></li>
             <li><span className="year">2012~2016</span><p className="event">육군 장교 (소초장, 작전장교, 동원과장, 중대장)</p></li>
             <li><span className="year">2016~2018</span><p className="event">네이버웹툰 (서버 개발팀)</p></li>
             <li><span className="year">2019~2021</span><p className="event">폭스바겐그룹코리아 (개발팀)</p></li>
